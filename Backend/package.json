@@ -1,0 +1,33 @@
+{
+  "name": "loan-origination-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Loan Origination & Approval System using Node.js, Express, MongoDB, JWT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "loan",
+    "origination",
+    "approval",
+    "nodejs",
+    "express",
+    "mongodb",
+    "jwt",
+    "loan officer"
+  ],
+  "author": "tejas shinde",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}

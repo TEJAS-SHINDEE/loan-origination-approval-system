@@ -1,0 +1,46 @@
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import api from "../api/axiosConfig";
+
+export default function CustomerDashboard() {
+
+  const { user, setUser } = useContext(AuthContext);
+
+  // fetch name user user from id and update in user context 
+
+  useEffect(() => {
+    fetchUserData();
+
+  }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await api.get(`/customer/me`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      console.log("23 data ", res.data);
+      setUser(prev => ({
+        ...prev,
+        name: res.data.name
+      }));
+    } catch (err) {
+      console.log("Failed to fetch user", err.message);
+    }
+  };
+
+  return (
+    
+    <div className="card">
+      
+      <h2>Customer Dashboard</h2>
+      <p>Actions:</p>
+      <ul>
+        <li><Link to="/customer/apply">Apply for a loan</Link></li>
+        <p></p>
+        <li><Link to="/customer/loans">View My Loans</Link></li>
+      </ul>
+    </div>
+  );
+}
